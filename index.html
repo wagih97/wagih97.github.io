@@ -456,6 +456,87 @@ section[id]{scroll-margin-top:66px}
 
 /* Beyond the lab */
 .beyond{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+/* Karaoke card: a small karaoke screen that sings through the favourite bands */
+.hob.kara{grid-column:1/-1;flex-direction:row;align-items:stretch}
+.hob-art.kara-screen{flex:1.25 1 0;height:auto;min-height:230px;border-bottom:0;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;gap:10px;padding:26px 30px 58px;color:#f1ece0;
+  background:radial-gradient(120% 90% at 12% 0%,#1b3157 0%,rgba(27,49,87,0) 60%),radial-gradient(90% 80% at 100% 100%,#3a2a12 0%,rgba(58,42,18,0) 62%),#0a1322}
+.kara-top{display:flex;align-items:center;gap:12px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:#9fb0cc}
+.kara-mic{width:34px;height:34px;flex:none;overflow:visible}
+.kara-mic .m{fill:#e3b55a}.kara-mic .s{fill:none;stroke:#e3b55a;stroke-width:1.8;stroke-linecap:round}
+.kara-mic .w{fill:none;stroke:#f4d695;stroke-width:1.6;stroke-linecap:round;opacity:0;animation:kara-wave 1.8s ease-out infinite}
+.kara-mic .w2{animation-delay:.6s}
+@keyframes kara-wave{0%{opacity:0;transform:translateX(-3px)}30%{opacity:.9}100%{opacity:0;transform:translateX(5px)}}
+.kara-line{margin:0;font-family:var(--f-display);font-weight:400;font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.05;letter-spacing:-.02em}
+.kara-word{position:relative;display:inline-block;white-space:nowrap;color:rgba(241,236,224,.26)}
+.kara-word::after{content:attr(data-t);position:absolute;left:0;top:0;width:0;overflow:hidden;white-space:nowrap;color:#f4d695;text-shadow:0 0 22px rgba(227,181,90,.45)}
+.kara-word.sing::after{animation:kara-wipe var(--kd,3.2s) linear forwards}
+@keyframes kara-wipe{to{width:100%}}
+.kara-meta{margin:0;font-family:var(--f-mono);font-size:12.5px;color:#b8c2d3;min-height:1.4em}
+.kara-eq{position:absolute;left:0;right:0;bottom:0;height:46px;display:flex;align-items:flex-end;gap:3px;padding:0 30px;opacity:.9}
+.kara-eq i{flex:1;height:100%;border-radius:2px 2px 0 0;background:linear-gradient(180deg,#f4d695,#e3b55a 45%,rgba(168,194,236,.55));transform-origin:50% 100%;transform:scaleY(.2);animation:kara-eq var(--d,900ms) ease-in-out var(--o,0ms) infinite alternate}
+@keyframes kara-eq{0%{transform:scaleY(.12)}50%{transform:scaleY(var(--p,.7))}100%{transform:scaleY(.3)}}
+.kara-body{flex:1 1 0;display:flex;flex-direction:column;justify-content:center}
+.kara-bands{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.kara-bands button{font:inherit;font-size:13.5px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink-2);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.kara-bands button:hover{border-color:var(--gold);color:var(--ink)}
+.kara-bands button.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+@media (max-width:760px){.hob.kara{flex-direction:column}.hob-art.kara-screen{border-right:0;border-bottom:1px solid var(--line);min-height:210px;padding:22px 20px 56px}.kara-eq{padding:0 20px}}
+:root.view-phone .hob.kara{flex-direction:column}:root.view-phone .hob-art.kara-screen{border-right:0;border-bottom:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){.kara-eq i,.kara-mic .w{animation:none}.kara-mic .w{opacity:.7}.kara-word::after{width:100%}.kara-word.sing::after{animation:none}}
+
+/* Console tab: ten favourite games as animated cartridges */
+.gpanel.npanel{grid-template-columns:minmax(0,1fr);gap:16px}
+.n-lead{margin:0;color:var(--ink-2);font-size:14px}
+.n-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:12px}
+.n-cart{position:relative;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--card);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s;animation:n-in .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*55ms)}
+@keyframes n-in{from{opacity:0;transform:translateY(14px) scale(.97)}}
+.n-cart:hover{transform:translateY(-5px) rotate(-.6deg);border-color:var(--c);box-shadow:0 14px 30px -14px var(--c)}
+.n-art{position:relative;height:104px;display:grid;place-items:center;background:radial-gradient(120% 120% at 20% 0%,color-mix(in srgb,var(--c) 34%,transparent),transparent 62%),var(--sunk);border-bottom:1px solid var(--line)}
+.n-art::after{content:"";position:absolute;left:14px;right:14px;bottom:0;height:5px;border-radius:3px 3px 0 0;background:repeating-linear-gradient(90deg,var(--c) 0 7px,transparent 7px 11px);opacity:.55}
+.n-art svg{width:64px;height:64px;overflow:visible}
+.n-art .f{fill:var(--c)}.n-art .l{fill:none;stroke:var(--c);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}.n-art .d{fill:var(--card)}.n-art .g{fill:var(--c);opacity:.28}
+.n-txt{padding:11px 13px 13px}
+.n-txt b{display:block;font-family:var(--f-display);font-weight:500;font-size:15.5px;line-height:1.2;text-wrap:balance}
+.n-txt small{display:block;margin-top:5px;font-family:var(--f-mono);font-size:11px;color:var(--ink-3,var(--ink-2))}
+.a-spin{transform-box:fill-box;transform-origin:50% 50%;animation:a-spin 6s linear infinite}
+.a-flip{transform-box:fill-box;transform-origin:50% 50%;animation:a-flip 1.8s ease-in-out infinite}
+.a-bob{animation:a-bob 2.6s ease-in-out infinite alternate}
+.a-bob2{animation:a-bob 2.6s ease-in-out -1.3s infinite alternate}
+.a-pulse{transform-box:fill-box;transform-origin:50% 50%;animation:a-pulse 2.2s ease-in-out infinite}
+.a-sweep{transform-box:view-box;transform-origin:18px 40px;animation:a-sweep 3.4s ease-in-out infinite alternate}
+.a-wave{transform-box:fill-box;transform-origin:0 50%;animation:a-wave 1.6s ease-in-out infinite alternate}
+.a-orbit{transform-box:view-box;transform-origin:32px 32px;animation:a-spin 5s linear infinite}
+.a-dash{stroke-dasharray:4 7;animation:a-dash 1.2s linear infinite}
+@keyframes a-spin{to{transform:rotate(360deg)}}
+@keyframes a-flip{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.12)}}
+@keyframes a-bob{from{transform:translateY(-3px)}to{transform:translateY(3px)}}
+@keyframes a-pulse{0%,100%{transform:scale(.86);opacity:.55}50%{transform:scale(1.08);opacity:1}}
+@keyframes a-sweep{from{transform:rotate(-16deg)}to{transform:rotate(14deg)}}
+@keyframes a-wave{from{transform:skewY(-7deg)}to{transform:skewY(7deg)}}
+@keyframes a-dash{to{stroke-dashoffset:-22}}
+/* Watching card: a film strip of favourite films and series */
+.hob.watch{grid-column:1/-1;flex-direction:row-reverse;align-items:stretch}
+.hob-art.w-screen{flex:1.4 1 0;height:auto;min-height:230px;min-width:0;border-bottom:0;border-left:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;padding:26px 0;color:#f1ece0;
+  background:conic-gradient(from 232deg at 100% 0%,rgba(244,214,149,.2) 0deg,rgba(244,214,149,0) 34deg,transparent 360deg),radial-gradient(90% 90% at 0% 100%,#1b3157 0%,rgba(27,49,87,0) 60%),#0a1322}
+.w-top{padding:0 26px 14px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:#9fb0cc;display:flex;align-items:center;gap:10px}
+.w-top i{width:9px;height:9px;border-radius:50%;background:#e3b55a;animation:a-pulse 1.6s ease-in-out infinite}
+.w-strip{overflow:hidden;padding:13px 0;background:#05080f;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08);
+  background-image:radial-gradient(circle,#f1ece0 0 2.4px,transparent 2.8px),radial-gradient(circle,#f1ece0 0 2.4px,transparent 2.8px);background-size:18px 8px,18px 8px;background-repeat:repeat-x;background-position:0 3px,0 calc(100% - 3px)}
+.w-reel{display:flex;width:max-content;animation:w-roll var(--wd,48s) linear infinite}
+.w-screen:hover .w-reel,.w-screen:focus-within .w-reel{animation-play-state:paused}
+@keyframes w-roll{to{transform:translateX(-50%)}}
+.w-list{list-style:none;margin:0;padding:0;display:flex;gap:10px;padding-right:10px}
+.w-frame{width:168px;height:96px;flex:none;border-radius:6px;padding:11px 13px;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(160deg,#182a49,#0e1a30);border:1px solid rgba(244,214,149,.22)}
+.w-frame span{font-family:var(--f-mono);font-size:10.5px;color:#e3b55a;display:flex;justify-content:space-between}
+.w-frame b{font-family:var(--f-display);font-weight:400;font-size:16.5px;line-height:1.15;color:#f1ece0;text-wrap:balance}
+.w-body{flex:1 1 0;display:flex;flex-direction:column;justify-content:center}
+.w-body .seg{margin-top:16px;align-self:flex-start}
+.w-body p.w-note{margin:14px 0 0;color:var(--ink-2);font-size:13.5px}
+@media (hover:none){.w-body p.w-note{display:none}}
+@media (max-width:760px){.hob.watch{flex-direction:column}.hob-art.w-screen{border-left:0;border-bottom:1px solid var(--line);min-height:200px}}
+:root.view-phone .hob.watch{flex-direction:column}:root.view-phone .hob-art.w-screen{border-left:0;border-bottom:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){.n-cart,.a-spin,.a-flip,.a-bob,.a-bob2,.a-pulse,.a-sweep,.a-wave,.a-orbit,.a-dash,.w-top i{animation:none}.w-reel{animation:none}.w-strip{overflow-x:auto}.w-list[aria-hidden]{display:none}}
+
 .hob{display:flex;flex-direction:column;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:20px;min-width:0}
 .hob-art{position:relative;height:178px;overflow:hidden;background:var(--sunk);border-bottom:1px solid var(--line)}
 .hob-body{padding:18px 22px 22px}
@@ -1211,7 +1292,7 @@ section[id]{scroll-margin-top:66px}
 
 <section class="sec" id="beyond">
   <div class="wrap">
-    <div class="sec-head"><p class="kicker">Beyond the lab</p><h2>Beyond <em>the laboratory</em></h2><p class="cap">Games · reading<br>collecting · travel</p></div>
+    <div class="sec-head"><p class="kicker">Beyond the lab</p><h2>Beyond <em>the laboratory</em></h2><p class="cap">Games · reading · karaoke<br>films · collecting · travel</p></div>
     <div class="beyond">
       <article class="hob games-card" id="games" aria-labelledby="games-title">
         <div class="games-head">
@@ -1220,6 +1301,7 @@ section[id]{scroll-margin-top:66px}
             <button type="button" role="tab" class="on" id="t-chess" aria-selected="true" aria-controls="g-chess">Chess</button>
             <button type="button" role="tab" id="t-mono" aria-selected="false" aria-controls="g-mono" tabindex="-1">Monopoly</button>
             <button type="button" role="tab" id="t-yatzy" aria-selected="false" aria-controls="g-yatzy" tabindex="-1">Yatzy</button>
+            <button type="button" role="tab" id="t-nin" aria-selected="false" aria-controls="g-nin" tabindex="-1">Nintendo</button>
           </div>
         </div>
         <div class="game-panels">
@@ -1296,6 +1378,21 @@ section[id]{scroll-margin-top:66px}
             <div class="ycard" id="ycard" aria-label="Scorecard"></div>
           </div>
 
+          <div class="gpanel npanel" id="g-nin" role="tabpanel" aria-labelledby="t-nin" hidden>
+            <p class="n-lead">Ten games I keep coming back to, all on the Nintendo Switch except one on PC.</p>
+            <ul class="n-grid">
+              <li class="n-cart" style="--i:0;--c:#d94b3d"><div class="n-art" aria-hidden="true"><svg viewBox="0 0 64 64"><ellipse class="g" cx="32" cy="54" rx="16" ry="3"/><g class="a-flip"><circle class="f" cx="32" cy="29" r="17"/><rect class="d" x="29.5" y="19" width="5" height="20" rx="2.5"/></g></svg></div><div class="n-txt"><b>Super Mario Bros. U Deluxe</b><small>2019 · Switch</small></div></li>
+              <li class="n-cart" style="--i:1;--c:#5b7fd6"><div class="n-art" aria-hidden="true"><svg viewBox="0 0 64 64"><circle class="f" cx="32" cy="32" r="13"/><ellipse class="l" cx="32" cy="32" rx="27" ry="9" transform="rotate(-18 32 32)"/><g class="a-orbit"><path class="f" d="M32 2l1.8 3.9 4.2.5-3.1 2.9.8 4.2-3.7-2.1-3.7 2.1.8-4.2-3.1-2.9 4.2-.5z"/></g></svg></div><div class="n-txt"><b>Super Mario Galaxy</b><small>2007 · Switch</small></div></li>
+              <li class="n-cart" style="--i:2;--c:#2f9e6b"><div class="n-art" aria-hidden="true"><svg viewBox="0 0 64 64"><g class="a-bob"><path class="f" d="M20 30l12-6 12 6-12 6z"/><path class="g" d="M20 30v13l12 6V36z"/><path class="l" d="M44 30v13l-12 6V36M20 30v13l12 6M20 30l12-6 12 6-12 6z"/></g><g class="a-bob2"><path class="f" d="M24 14l8-4 8 4-8 4z"/><path class="l" d="M24 14v8l8 4 8-4v-8l-8 4z"/></g></svg></div><div class="n-txt"><b>Super Mario 3D World</b><small>2013 · Switch</small></div></li>
+              <li class="n-cart" style="--i:3;--c:#3aa6c9"><div class="n-art" aria-hidden="true"><svg viewBox="0 0 64 64"><circle class="g" cx="32" cy="32" r="24"/><circle class="l a-pulse" cx="32" cy="32" r="15"/><circle class="f a-pulse" cx="32" cy="32" r="5"/></svg></div><div class="n-txt"><b>Detroit: Become Human</b><small>2018 · PC</small></div></li>
+              <li class="n-cart" style="--i:4;--c:#8b5fd0"><div class="n-art" aria-hidden="true"><svg viewBox="0 0 64 64"><path class="l" d="M32 40v18M32 50c-5 0-8-3-9-7M32 54c5 0 8-3 9-6"/><g class="a-spin"><circle class="f" cx="32" cy="12" r="6.5"/><circle class="f" cx="45" cy="22" r="6.5"/><circle class="f" cx="40" cy="37" r="6.5"/><circle class="f" cx="24" cy="37" r="6.5"/><circle class="f" cx="19" cy="22" r="6.5"/><circle class="d" cx="32" cy="26" r="6"/></g></svg></div><div class="n-txt"><b>Super Mario Bros. Wonder</b><small>2023 · Switch</small></div></li>
+              <li class="n-cart" style="--i:5;--c:#e08a2b"><div class="n-art" aria-hidden="true"><svg viewBox="0 0 64 64"><path class="l" d="M14 8v50"/><g class="a-wave"><path class="g" d="M14 10h36v24H14z"/><path class="f" d="M14 10h9v8h-9zM32 10h9v8h-9zM23 18h9v8h-9zM41 18h9v8h-9zM14 26h9v8h-9zM32 26h9v8h-9z"/><path class="l" d="M14 10h36v24H14"/></g></svg></div><div class="n-txt"><b>Mario Kart 8 Deluxe</b><small>2017 · Switch</small></div></li>
+              <li class="n-cart" style="--i:6;--c:#3f9a52"><div class="n-art" aria-hidden="true"><svg viewBox="0 0 64 64"><g class="a-sweep"><path class="g" d="M26 34L60 14v40z"/><rect class="f" x="6" y="34" width="20" height="12" rx="3"/><path class="f" d="M26 32l8-4v24l-8-4z"/></g><circle class="f a-pulse" cx="50" cy="10" r="2.5"/></svg></div><div class="n-txt"><b>Luigi’s Mansion 3</b><small>2019 · Switch</small></div></li>
+              <li class="n-cart" style="--i:7;--c:#7fb23a"><div class="n-art" aria-hidden="true"><svg viewBox="0 0 64 64"><g class="a-spin"><circle class="f" cx="30" cy="30" r="19"/><path class="d" d="M13 24c10 2 24 2 34-2l1 2.5c-11 4-25 4-36 2zM14 37c9-9 21-15 31-17l1 2.4c-10 2-21 8-30 17zM22 46c2-12 9-24 17-32l2 1.8c-8 8-14 19-16 31z" opacity=".8"/></g><path class="l a-dash" d="M46 42c8 4 4 12 12 14"/></svg></div><div class="n-txt"><b>Yoshi’s Crafted World</b><small>2019 · Switch</small></div></li>
+              <li class="n-cart" style="--i:8;--c:#e06a9a"><div class="n-art" aria-hidden="true"><svg viewBox="0 0 64 64"><path class="l a-dash" d="M6 52c8-2 14-8 18-14M4 40c6-1 10-4 14-9"/><g class="a-pulse"><path class="f" d="M40 8l5.6 12 13 1.7-9.6 9 2.5 13L40 37.300l-11.500 6.400 2.500-13-9.600-9 13-1.700z"/></g></svg></div><div class="n-txt"><b>Kirby and the Forgotten Land</b><small>2022 · Switch</small></div></li>
+              <li class="n-cart" style="--i:9;--c:#c9483f"><div class="n-art" aria-hidden="true"><svg viewBox="0 0 64 64"><path class="l a-dash" d="M4 50c10-6 18 6 28 0s18 6 28 0"/><g class="a-bob"><path class="f" d="M32 6c10 0 17 7.500 17 16.500 0 8-6 14-11.500 18.500h-11C21 36.500 15 30.500 15 22.500 15 13.500 22 6 32 6z"/><path class="d" d="M32 6c-4 4-5.500 10-5.500 16.500S28 36 29.500 41h5c1.500-5 3-12 3-18.500S36 10 32 6z" opacity=".55"/><path class="l" d="M27 41l1.500 6h7l1.500-6"/><rect class="f" x="27.500" y="47" width="9" height="6" rx="1.500"/></g></svg></div><div class="n-txt"><b>Super Mario Odyssey</b><small>2017 · Switch</small></div></li>
+            </ul>
+          </div>
         </div>
       </article>
       <article class="hob shelf-card" id="reading" aria-labelledby="shelf-title">
@@ -1364,6 +1461,27 @@ section[id]{scroll-margin-top:66px}
           </svg>
         </div>
         <div class="hob-body"><p class="kicker">Travel</p><h3>Exploring new places and cultures</h3><p><a href="#journey">See the journey map</a></p></div>
+      </article>
+      <article class="hob watch" id="watching" aria-labelledby="watch-title">
+        <div class="hob-art w-screen">
+          <div class="w-top" aria-hidden="true"><i></i><span id="w-label">Now showing · films</span></div>
+          <div class="w-strip"><div class="w-reel" id="w-reel"></div></div>
+        </div>
+        <div class="hob-body w-body"><p class="kicker">Watching</p><h3 id="watch-title">Ten favourite films and ten favourite series</h3>
+          <div class="seg" role="group" aria-label="Choose films or series"><button type="button" class="on" data-w="films" aria-pressed="true">Films</button><button type="button" data-w="series" aria-pressed="false">Series</button></div>
+          <p class="w-note">Hover the strip to pause it.</p>
+        </div>
+      </article>
+      <article class="hob kara" id="karaoke" aria-labelledby="kara-title">
+        <div class="hob-art kara-screen" aria-hidden="true">
+          <div class="kara-top"><svg class="kara-mic" viewBox="0 0 34 34"><rect class="m" x="9" y="3" width="10" height="16" rx="5"/><path class="s" d="M5 15a9 9 0 0 0 18 0M14 24v6M9 30h10"/><path class="w" d="M26 10c2 3 2 7 0 10"/><path class="w w2" d="M29.5 7c3.4 5 3.4 11 0 16"/></svg><span id="kara-count">Now singing · 1 of 8</span></div>
+          <p class="kara-line"><span class="kara-word" id="kara-word" data-t="The Beatles">The Beatles</span></p>
+          <p class="kara-meta" id="kara-meta">Liverpool · formed 1960</p>
+          <div class="kara-eq" id="kara-eq"></div>
+        </div>
+        <div class="hob-body kara-body"><p class="kicker">Karaoke</p><h3 id="kara-title">A microphone and eight favourite artists</h3>
+          <div class="kara-bands" id="kara-bands" role="group" aria-label="Favourite artists"></div>
+        </div>
       </article>
     </div>
   </div>
@@ -2219,19 +2337,27 @@ section[id]{scroll-margin-top:66px}
       ['Meditations', 'Marcus Aurelius', 'c. 170–180 CE', 'phil', 'Stoic notes a Roman emperor wrote to himself.', 31, 166],
       ['The Muqaddimah', 'Ibn Khaldun', '1377', 'hist', 'A fourteenth-century theory of how dynasties rise and fall.', 37, 188],
       ['The Prince', 'Machiavelli', '1532', 'pol', 'Power as it is, not as it ought to be.', 29, 156],
+      ['Moby-Dick', 'Herman Melville', '1851', 'lit', 'Captain Ahab hunts the white whale that took his leg.', 47, 202],
       ['Notes from Underground', 'Dostoevsky', '1864', 'lit', 'A spiteful narrator who refuses to be reasonable.', 35, 172],
       ['Crime and Punishment', 'Dostoevsky', '1866', 'lit', 'Raskolnikov, a murder, and a conscience that will not rest.', 41, 196],
       ['The Brothers Karamazov', 'Dostoevsky', '1880', 'lit', 'Faith, doubt and freedom, argued out between three brothers.', 45, 204],
       ['Thus Spoke Zarathustra', 'Nietzsche', '1883–1885', 'phil', 'The death of God, the Übermensch and eternal recurrence.', 39, 190],
+      ['Beyond Good and Evil', 'Nietzsche', '1886', 'phil', 'An attack on the moral certainties of earlier philosophers.', 35, 180],
       ['The Metamorphosis', 'Kafka', '1915', 'lit', 'Gregor Samsa wakes up transformed into a giant insect.', 33, 164],
       ['The Trial', 'Kafka', '1925', 'lit', 'Josef K. is arrested and tried by a court he never sees.', 31, 178],
+      ['Brave New World', 'Aldous Huxley', '1932', 'pol', 'A society kept obedient by pleasure, conditioning and soma.', 35, 174],
       ['The Stranger', 'Camus', '1942', 'lit', 'Meursault, a killing on a beach and an indifferent universe.', 31, 168],
       ['The Myth of Sisyphus', 'Camus', '1942', 'phil', 'The absurd, and why one must imagine Sisyphus happy.', 37, 182],
       ['Animal Farm', 'George Orwell', '1945', 'pol', 'A farmyard revolution in which some animals end up more equal than others.', 31, 162],
+      ['Man’s Search for Meaning', 'Viktor Frankl', '1946', 'phil', 'A psychiatrist survives the camps and asks what keeps a person alive.', 31, 170],
       ['Nineteen Eighty-Four', 'George Orwell', '1949', 'pol', 'Big Brother, doublethink and the Ministry of Truth.', 39, 186],
-      ['Bad Samaritans', 'Ha-Joon Chang', '2007', 'pol', 'Why rich countries preach the free trade they never practised on their own way up.', 35, 178]
+      ['Fahrenheit 451', 'Ray Bradbury', '1953', 'pol', 'A fireman whose job is to burn books starts to read them.', 31, 166],
+      ['One Hundred Years of Solitude', 'Gabriel García Márquez', '1967', 'lit', 'Seven generations of the Buendía family in the town of Macondo.', 43, 198],
+      ['The Alchemist', 'Paulo Coelho', '1988', 'lit', 'A shepherd crosses the desert to the pyramids in search of a treasure.', 29, 160],
+      ['Bad Samaritans', 'Ha-Joon Chang', '2007', 'pol', 'Why rich countries preach the free trade they never practised on their own way up.', 35, 178],
+      ['Surveillance State', 'Chin & Lin', '2022', 'pol', 'How China built a system of social control out of cameras and data.', 37, 184]
     ];
-    const FULL = { Machiavelli: 'Niccolò Machiavelli', Dostoevsky: 'Fyodor Dostoevsky', Nietzsche: 'Friedrich Nietzsche', Kafka: 'Franz Kafka', Camus: 'Albert Camus' };
+    const FULL = { Machiavelli: 'Niccolò Machiavelli', Dostoevsky: 'Fyodor Dostoevsky', Nietzsche: 'Friedrich Nietzsche', Kafka: 'Franz Kafka', Camus: 'Albert Camus', 'Chin & Lin': 'Josh Chin and Liza Lin' };
     const SHADE = [1, .93, 1.07, .97, 1.04];
     const spines = BOOKS.map(([t, a, y, c, n, w, h], i) => {
       const b = document.createElement('button');
@@ -2239,7 +2365,7 @@ section[id]{scroll-margin-top:66px}
       b.style.cssText = `--w:${w}px;--h:${h}px;--c:var(--sp-${c});--tc:var(--sp-${c}-t);--b:${SHADE[i % SHADE.length]}`;
       b.setAttribute('aria-label', `${t} by ${FULL[a] || a}, ${y}`);
       const part = (tag, cls, text) => { const el = b.appendChild(document.createElement(tag)); el.className = cls; if (text) el.textContent = text; };
-      part('i', 'bd'); part('span', 'bt', t.replace(/’/g, "'")); part('i', 'orn'); part('span', 'ba', a.split(' ').slice(-1)[0]); part('i', 'bd');
+      part('i', 'bd'); part('span', 'bt', t.replace(/’/g, "'")); part('i', 'orn'); part('span', 'ba', a.includes('&') ? a : a.split(' ').slice(-1)[0]); part('i', 'bd');
       host.appendChild(b);
       return b;
     });
@@ -2566,6 +2692,40 @@ section[id]{scroll-margin-top:66px}
     addEventListener('load', () => { setTicks(); ask(); });
     setTicks(); update(); setTimeout(() => { setTicks(); ask(); }, 1200);
   })();
+})();
+</script>
+<script>
+(function(){
+  var word=document.getElementById('kara-word'); if(!word) return;
+  var BANDS=[['The Beatles','Liverpool · formed 1960'],['Pink Floyd','London · formed 1965'],['Radiohead','Abingdon · formed 1985'],['Coldplay','London · formed 1997'],['Nirvana','Aberdeen, Washington · formed 1987'],['Arctic Monkeys','Sheffield · formed 2002'],['Mohamed Mounir','Aswan, Egypt · singing since the 1970s'],['Fairuz','Beirut, Lebanon · singing since the 1950s']];
+  var meta=document.getElementById('kara-meta'), count=document.getElementById('kara-count'), box=document.getElementById('kara-bands'), eq=document.getElementById('kara-eq');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches, cur=-1, timer=0, picked=false;
+  for(var k=0;k<34;k++){var b=document.createElement('i');b.style.setProperty('--d',(520+((k*197)%640))+'ms');b.style.setProperty('--o',(-(k*131)%900)+'ms');b.style.setProperty('--p',(.35+((k*73)%60)/100).toFixed(2));eq.appendChild(b);}
+  var btns=BANDS.map(function(x,i){var b=document.createElement('button');b.type='button';b.textContent=x[0];b.setAttribute('aria-pressed','false');
+    b.addEventListener('click',function(){picked=true;clearInterval(timer);timer=0;show(i);});box.appendChild(b);return b;});
+  function show(i){cur=i;var x=BANDS[i];word.classList.remove('sing');word.textContent=x[0];word.setAttribute('data-t',x[0]);
+    word.style.setProperty('--kd',(1.6+x[0].length*.16).toFixed(2)+'s');void word.offsetWidth;word.classList.add('sing');
+    meta.textContent=x[1];count.textContent='Now singing · '+(i+1)+' of '+BANDS.length;
+    btns.forEach(function(b,k){b.classList.toggle('on',k===i);b.setAttribute('aria-pressed',String(k===i));});}
+  show(0);
+  if(reduce||!('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting&&!timer&&!picked) timer=setInterval(function(){show((cur+1)%BANDS.length)},4600);
+    else if(!e.isIntersecting&&timer){clearInterval(timer);timer=0;}
+  });},{threshold:.3}).observe(document.getElementById('karaoke'));
+})();
+</script>
+<script>
+(function(){
+  var reel=document.getElementById('w-reel'); if(!reel) return;
+  var DATA={films:[["V for Vendetta", "2005"], ["The Silence of the Lambs", "1991"], ["Prisoners", "2013"], ["Signs", "2002"], ["The Matrix", "1999"], ["Children of Men", "2006"], ["Seven", "1995"], ["The Shawshank Redemption", "1994"], ["Apocalypto", "2006"], ["The Prestige", "2006"]],series:[["Breaking Bad", "2008"], ["True Detective", "2014"], ["Succession", "2018"], ["Arcane", "2021"], ["After Life", "2019"], ["Black Mirror", "2011"], ["Rick and Morty", "2013"], ["BoJack Horseman", "2014"], ["The Bear", "2022"], ["Better Call Saul", "2015"]]};
+  var label=document.getElementById('w-label'), btns=[].slice.call(document.querySelectorAll('#watching [data-w]'));
+  function list(items,hidden){var ol=document.createElement('ol');ol.className='w-list';if(hidden)ol.setAttribute('aria-hidden','true');
+    items.forEach(function(x,i){var li=document.createElement('li');li.className='w-frame';var s=document.createElement('span');s.innerHTML='<i></i><i></i>';s.firstChild.textContent=(i<9?'0':'')+(i+1);s.lastChild.textContent=x[1];s.firstChild.style.fontStyle=s.lastChild.style.fontStyle='normal';var b=document.createElement('b');b.textContent=x[0];li.appendChild(s);li.appendChild(b);ol.appendChild(li);});return ol;}
+  function show(k){reel.textContent='';reel.appendChild(list(DATA[k]));reel.appendChild(list(DATA[k],true));reel.style.animation='none';void reel.offsetWidth;reel.style.animation='';
+    label.textContent='Now showing · '+k;btns.forEach(function(b){var on=b.getAttribute('data-w')===k;b.classList.toggle('on',on);b.setAttribute('aria-pressed',String(on));});}
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.getAttribute('data-w'))})});
+  show('films');
 })();
 </script>
 </body>
