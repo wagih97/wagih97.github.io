@@ -1,0 +1,5 @@
+# Guestbook for wagihmarcus.com
+# Each signature reaches your Gmail from Formspree with a ready-made line labelled "book_line".
+# To publish a signature, paste that line at the end of this file and commit it.
+# Format, one entry per line:   date | name | where from | note
+# Lines that start with # are not shown on the site.

@@ -1,4 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://wagihmarcus.com/</loc><lastmod>2026-11-15</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://wagihmarcus.com/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagihmarcus.com/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wagihmarcus.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wagihmarcus.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wagihmarcus.com/"/>
+  </url>
+  <url>
+    <loc>https://wagihmarcus.com/ar/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagihmarcus.com/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wagihmarcus.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wagihmarcus.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wagihmarcus.com/"/>
+  </url>
+  <url>
+    <loc>https://wagihmarcus.com/ja/</loc>
+    <lastmod>2026-11-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wagihmarcus.com/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wagihmarcus.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wagihmarcus.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wagihmarcus.com/"/>
+  </url>
 </urlset>
